@@ -10,8 +10,8 @@ set t_Co=256
 
 nmap <silent> <F3> :NERDTreeToggle<CR>
 nmap <silent> <F4> :ALEToggle<CR>
-nmap <silent> <F12> :split ~\.vimrc<CR>
-nmap <silent> <C-F12> :e ~\.vimrc<CR>
+nmap <silent> <F12> :split $HOME/.vimrc<CR>
+nmap <silent> <C-F12> :e $HOME/.vimrc<CR>
 
 " Close NERDTree if it's the only window open
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
@@ -44,6 +44,7 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
 silent! call airline#extensions#whitespace#disable()
 
+let g:indentLine_enabled = 0
 let g:indentLine_showFirstIndentLevel = 1
 let g:indentLine_setColors = 0
 
@@ -54,8 +55,18 @@ let g:indentLine_first_char = '┆'
 "let g:indentLine_char = '|'
 "let g:indentLine_first_char = '|'
 
+if has('gui-running')
+  set guifont=Consolas:h11
+
+  set guioptions-=T
+  set guioptions-=r
+  set guioptions-=L
+endif
+
 " Indent lines for tabs
-set list lcs=tab:┆\  
+"set list lcs=tab:┆\  
+set listchars=space:.,tab:..
+set list
 
 set viminfo='100,<1000
 
