@@ -1,23 +1,40 @@
 #!/bin/bash
 
-if [ $# == 0 ]; then
-    VIM="$HOME/.vim"
-    VIMRC="$HOME/.vimrc"
-elif [ $# == 2 ]; then
-    if [ "$1" == "--win" ]; then
-        VIM="$2/vimfiles"
-        VIMRC="$2/_vimrc"
-    else
-        echo "Fatal: Unrecognized argument: $1"
-        exit 1
-    fi
-else
-    echo "Usage: $0 [--win <home-path>]"
-    exit 1
-fi
+root="$HOME"
+vim_dir=".vim"
+vimrc=".vimrc"
 
-echo ".vim path:   $VIM"
-echo ".vimrc path: $VIMRC"
+while [[ $# -gt 0 ]]; do
+    key=$1
+    case $key in
+    -w|--windows)
+        vim_dir="vimfiles"
+        vimrc="_vim"
+        shift
+    ;;
+    -p|--path)
+        root="$2"
+        shift
+        shift
+    ;;
+    -h|--help)
+        echo "Usage: $0 [-w|--windows] [-p|--path <path-to-home>]"
+        echo " -w, --windows: Changes .vim and .vimrc to vimfiles and _vimrc respectively"
+        echo " -p, --path   : Specify the path place the configuration files in"
+        exit 0
+    ;;
+    *)
+        echo "Fatal: Unrecognized argument \"$key\". See --help for usage."
+        exit 1
+    ;;
+    esac
+done
+
+vim_dir_path="$root/$vim_dir"
+vimrc_path="$root/$vimrc"
+
+echo ".vim path:   $vim_dir_path"
+echo ".vimrc path: $vimrc_path"
 read -p "Continue? (Y/N): " confirm && [[ $confirm == [yY] || $confirm == [yY][eE][sS] ]] || exit 1
 
 
@@ -29,25 +46,25 @@ declare -a repo_list=("https://github.com/vim-airline/vim-airline.git" \
                       "https://github.com/scrooloose/nerdtree.git" \
                       "https://github.com/justinmk/vim-syntax-extra.git")
 
-if [ -f "$VIMRC" ]; then
-    echo "Fatal: File $VIMRC already exists"
+if [ -f "$vimrc_path" ]; then
+    echo "Fatal: File $vimrc_path already exists"
     exit 1
 fi
-if [ -d "$VIM" ]; then
-    echo "Fatal: Directory $VIM already exists"
+if [ -d "$vim_dir_path" ]; then
+    echo "Fatal: Directory $vim_dir_path already exists"
     exit 1
 fi
 
 orig_dir=$(pwd)
 
-cp .vimrc $VIMRC
-cp -r .vim $VIM
+cp .vimrc $vimrc_path
+cp -r .vim $vim_dir_path
 
-if [ ! -d "$VIM/bundle" ]; then
-    mkdir $VIM/bundle
+if [ ! -d "$vim_dir_path/bundle" ]; then
+    mkdir $vim_dir_path/bundle
 fi
 
-cd $VIM/bundle
+cd $vim_dir_path/bundle
 
 for repo in ${repo_list[@]}; do
     git clone $repo
