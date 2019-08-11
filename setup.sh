@@ -44,7 +44,10 @@ declare -a repo_list=("https://github.com/vim-airline/vim-airline.git" \
                       "https://github.com/morhetz/gruvbox.git" \
                       "https://github.com/Yggdroot/indentLine.git" \
                       "https://github.com/scrooloose/nerdtree.git" \
-                      "https://github.com/justinmk/vim-syntax-extra.git")
+                      "https://github.com/justinmk/vim-syntax-extra.git" \
+                      "https://github.com/chriskempson/base16-vim.git" \
+                      "https://github.com/arcticicestudio/nord-vim.git" \
+                      "https://github.com/MTDL9/vim-log-highlighting.git")
 
 if [ -f "$vimrc_path" ]; then
     echo "Fatal: File $vimrc_path already exists"

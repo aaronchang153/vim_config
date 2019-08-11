@@ -24,14 +24,19 @@ nnoremap <Leader>r :%s/\<<C-r><C-w>\>/
 
 "set termguicolors
 set background=dark
-colorscheme gruvbox
+"colorscheme gruvbox
 "colorscheme one
+colorscheme base16-default-dark
+"colorscheme nord
 
 "let g:ale_sign_column_always=1
 "set scl=no
 
-let g:airline_theme='gruvbox'
+"let g:airline_theme='gruvbox'
 "let g:airline_theme='onedark'
+let g:airline_theme='base16_default'
+"let g:airline_theme='nord'
+
 let g:airline#extensions#tabline#enabled = 1
 "let g:airline#extensions#tabline#buffer_idx_mode = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
