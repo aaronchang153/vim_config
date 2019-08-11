@@ -9,7 +9,7 @@ while [[ $# -gt 0 ]]; do
     case $key in
     -w|--windows)
         vim_dir="vimfiles"
-        vimrc="_vim"
+        vimrc="_vimrc"
         shift
     ;;
     -p|--path)
