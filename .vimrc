@@ -104,7 +104,7 @@ set foldlevel=99
 
 " macros for autocompleting braces/quotes
 " taken from: https://vim.fandom.com/wiki/Making_Parenthesis_And_Brackets_Handling_Easier
-inoremap {<CR> {<CR>}<Esc>O<Tab>
+inoremap {<CR> {<CR>}<Esc>O
 inoremap ( ()<Esc>i
 inoremap [ []<Esc>i
 inoremap " ""<Esc>i
