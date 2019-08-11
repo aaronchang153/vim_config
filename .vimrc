@@ -20,7 +20,7 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 " Find and replace word under cursor
 " Extra < and > ensure that only compelte words are matched (e.g. foo doesn't
 " match to food)
-nnoremap <Leader>r :%s/\<<C-r><C-w>\>/
+nnoremap <Leader>r :%s/\<<C-r><C-w>\>//gcI<Left><Left><Left><Left>
 
 "set termguicolors
 set background=dark
