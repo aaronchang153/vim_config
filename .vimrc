@@ -4,6 +4,7 @@ syntax enable
 set encoding=utf-8
 set t_Co=256
 
+nmap <silent> <F2> :TagbarToggle<CR>
 nmap <silent> <F3> :NERDTreeToggle<CR>
 nmap <silent> <F4> :ALEToggle<CR>
 nmap <silent> <F12> :split $HOME/.vimrc<CR>
