@@ -1,10 +1,5 @@
 execute pathogen#infect()
 syntax enable
-filetype plugin indent on
-"set omnifunc=syntaxcomplete#Complete
-"set completeopt-=preview
-"set tags+=~\tags\mingw.tags
-"map <C-F12> :ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
 
 set encoding=utf-8
 set t_Co=256
@@ -12,6 +7,7 @@ set t_Co=256
 nmap <silent> <F3> :NERDTreeToggle<CR>
 nmap <silent> <F4> :ALEToggle<CR>
 nmap <silent> <F12> :split $HOME/.vimrc<CR>
+nnoremap <C-F5> :call UpdateTags()<CR>
 nmap <silent> <C-F12> :e $HOME/.vimrc<CR>
 
 " Close NERDTree if it's the only window open
@@ -156,4 +152,30 @@ func! WordProcessorMode()
 endfu
 
 com! WP call WordProcessorMode()
+
+" Omnicomplete setup
+" Requires ctags
+
+if v:version >= 600
+  filetype plugin on
+  filetype indent on
+else
+  filetype on
+endif
+
+if v:version >= 700
+  set omnifunc=syntaxcomplete#Complete " override built-in C omnicomplete with C++ OmniCppComplete plugin
+  let OmniCpp_GlobalScopeSearch   = 1
+  let OmniCpp_DisplayMode         = 1
+  let OmniCpp_ShowScopeInAbbr     = 0 "do not show namespace in pop-up
+  let OmniCpp_ShowPrototypeInAbbr = 1 "show prototype in pop-up
+  let OmniCpp_ShowAccess          = 1 "show access in pop-up
+  let OmniCpp_SelectFirstItem     = 1 "select first item in pop-up
+  set completeopt=menuone,menu,longest
+endif
+
+function! UpdateTags()
+  silent execute ":!ctags -R --languages=C,C++ --c++-kinds=+p --fields=+iaS --extras=+q ."
+  echohl StatusLine | echo "C/C++ tag updated" | echohl None
+endfunction
 
