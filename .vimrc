@@ -49,6 +49,8 @@ let g:indentLine_first_char = '┆'
 "let g:indentLine_char = '|'
 "let g:indentLine_first_char = '|'
 
+let g:session_autosave='no'
+
 if has('gui_running')
   set guifont=Consolas:h11
   set lines=28
