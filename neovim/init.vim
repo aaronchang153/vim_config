@@ -92,3 +92,8 @@ set foldlevel=99
 nmap <silent> <F2> :TagbarToggle<CR>
 nmap <silent> <F3> :NERDTreeToggle<CR>
 nmap <silent> <F4> :ALEToggle<CR>
+
+" Find and replace word under cursor
+" Extra < and > ensure that only compelte words are matched (e.g. foo doesn't
+" match to food)
+nnoremap <Leader>r :%s/\<<C-r><C-w>\>//gcI<Left><Left><Left><Left>
