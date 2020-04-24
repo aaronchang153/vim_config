@@ -37,21 +37,6 @@ echo ".vim path:   $vim_dir_path"
 echo ".vimrc path: $vimrc_path"
 read -p "Continue? (Y/N): " confirm && [[ $confirm == [yY] || $confirm == [yY][eE][sS] ]] || exit 1
 
-
-declare -a repo_list=("https://github.com/vim-airline/vim-airline.git" \
-                      "https://github.com/vim-airline/vim-airline-themes.git" \
-                      "https://github.com/dense-analysis/ale.git" \
-                      "https://github.com/morhetz/gruvbox.git" \
-                      "https://github.com/Yggdroot/indentLine.git" \
-                      "https://github.com/scrooloose/nerdtree.git" \
-                      "https://github.com/justinmk/vim-syntax-extra.git" \
-                      "https://github.com/chriskempson/base16-vim.git" \
-                      "https://github.com/arcticicestudio/nord-vim.git" \
-                      "https://github.com/MTDL9/vim-log-highlighting.git" \
-                      "git://github.com/majutsushi/tagbar" \
-                      "https://github.com/xolox/vim-misc.git" \
-                      "https://github.com/xolox/vim-session.git")
-
 if [ -f "$vimrc_path" ]; then
     echo "Fatal: File $vimrc_path already exists"
     exit 1
@@ -65,15 +50,5 @@ orig_dir=$(pwd)
 
 cp .vimrc $vimrc_path
 cp -r .vim $vim_dir_path
-
-if [ ! -d "$vim_dir_path/bundle" ]; then
-    mkdir $vim_dir_path/bundle
-fi
-
-cd $vim_dir_path/bundle
-
-for repo in ${repo_list[@]}; do
-    git clone $repo
-done
 
 cd $orig_dir
