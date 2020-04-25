@@ -25,9 +25,11 @@ call plug#end()
 
 
 """ Colorscheme
+if exists('+termguicolors')
+  set termguicolors
+endif
 let ayucolor="dark"
 colorscheme ayu
-"colorscheme base16-default-dark
 
 
 """ Plugin Configuration
@@ -43,12 +45,11 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 silent! call airline#extensions#whitespace#disable()
 
 "" Config - indent line
-" disable by default
-let g:indentLine_enabled = 0
+let g:indentLine_enabled = 1
 let g:indentLine_showFirstIndentLevel = 1
 let g:indentLine_setColors = 0
-"let g:indentLine_char = 'â”†'
-"let g:indentLine_first_char = 'â”†'
+let g:indentLine_char = '¦'
+let g:indentLine_first_char = '¦'
 
 "" Config - session
 let g:session_autosave='no'
@@ -73,7 +74,6 @@ if has('gui_running')
 endif
 
 " Indent lines for tabs
-"set listchars=space:Â·,tab:>Â·
 set listchars=space:·,tab:>·
 set list
 
