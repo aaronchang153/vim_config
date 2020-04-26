@@ -20,6 +20,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'majutsushi/tagbar'
 Plug 'xolox/vim-misc'
 Plug 'xolox/vim-session'
+Plug 'henrik/vim-indexed-search'
 
 call plug#end()
 
