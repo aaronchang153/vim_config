@@ -89,7 +89,7 @@ set autoindent
 set copyindent
 set mouse=a
 set number
-set wrap!
+set nowrap
 set backspace=indent,eol,start
 set title
 set undolevels=100
