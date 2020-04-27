@@ -70,7 +70,7 @@ if has('gui_running')
   set guioptions-=T "Toolbar
   set guioptions-=r "Right Scrollbar
   set guioptions-=L "Left Scrollbar
-  set guioptions-=m "Menu
+  "set guioptions-=m "Menu
 endif
 
 " Indent lines for tabs
@@ -126,3 +126,5 @@ nmap <silent> <C-F12> :e $HOME/.vimrc<CR>
 " Extra < and > ensure that only compelte words are matched (e.g. foo doesn't
 " match to food)
 nnoremap <Leader>r :%s/\<<C-r><C-w>\>//gcI<Left><Left><Left><Left>
+
+nnoremap <Leader>cd :cd %:p:h<CR>:pwd<CR>
