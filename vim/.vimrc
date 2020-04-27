@@ -21,6 +21,7 @@ Plug 'majutsushi/tagbar'
 Plug 'xolox/vim-misc'
 Plug 'xolox/vim-session'
 Plug 'henrik/vim-indexed-search'
+Plug 'ludovicchabant/vim-gutentags'
 
 call plug#end()
 
@@ -35,8 +36,6 @@ colorscheme ayu
 
 """ Plugin Configuration
 
-"" Config - NERDTree
-" Close NERDTree if it's the only window open
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 "" Config - airline
@@ -55,8 +54,8 @@ let g:indentLine_first_char = '¦'
 "" Config - session
 let g:session_autosave='no'
 
-"" Config - deocomplete
-"let g:deoplete#enable_at_startup = 1
+"" Config - gutentags
+let g:gutentags_enabled = 0
 
 
 """ Vim Settings
@@ -112,14 +111,16 @@ set sidescrolloff=4
 set foldmethod=indent
 set foldlevel=99
 
+set completeopt-=preview
+
 
 """ Custom Bindings
 nmap <silent> <F2> :TagbarToggle<CR>
 nmap <silent> <F3> :NERDTreeToggle<CR>
 nmap <silent> <F4> :ALEToggle<CR>
 
-nmap <silent> <F12> :split $HOME\_vimrc<CR>
-nmap <silent> <C-F12> :e $HOME\_vimrc<CR>
+nmap <silent> <F12> :split $HOME/.vimrc<CR>
+nmap <silent> <C-F12> :e $HOME/.vimrc<CR>
 
 " Find and replace word under cursor
 " Extra < and > ensure that only compelte words are matched (e.g. foo doesn't
