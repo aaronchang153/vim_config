@@ -22,6 +22,7 @@ Plug 'xolox/vim-misc'
 Plug 'xolox/vim-session'
 Plug 'henrik/vim-indexed-search'
 Plug 'ludovicchabant/vim-gutentags'
+Plug 'mbbill/undotree'
 
 call plug#end()
 
@@ -118,6 +119,7 @@ set completeopt-=preview
 nmap <silent> <F2> :TagbarToggle<CR>
 nmap <silent> <F3> :NERDTreeToggle<CR>
 nmap <silent> <F4> :ALEToggle<CR>
+nmap <silent> <F9> :UndotreeToggle<CR>
 
 nmap <silent> <F12> :split $HOME/.vimrc<CR>
 nmap <silent> <C-F12> :e $HOME/.vimrc<CR>
