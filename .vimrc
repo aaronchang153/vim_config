@@ -9,6 +9,7 @@ Plug 'ayu-theme/ayu-vim'
 
 "" Plugin - Language Support
 Plug 'dense-analysis/ale'
+Plug 'justinmk/vim-syntax-extra'
 Plug 'sheerun/vim-polyglot'
 
 "" Plugin - Utilities
