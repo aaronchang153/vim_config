@@ -72,13 +72,13 @@ read -p "Continue? (Y/N): " confirm && [[ $confirm == [yY] || $confirm == [yY][e
 if [ -d "$vim_dir" ]; then
     echo "Directory $vim_dir already exists. Delete it? (Y/N)"
     read -p "Continue? (Y/N): " confirm && [[ $confirm == [yY] || $confirm == [yY][eE][sS] ]] || exit 1
-    rm -rf $vim_dir
 fi
 if [ -f "$vimrc" ]; then
     echo "File $vimrc already exists. Delete it? (Y/N)"
     read -p "Continue? (Y/N): " confirm && [[ $confirm == [yY] || $confirm == [yY][eE][sS] ]] || exit 1
-    rm $vimrc
 fi
+
+rm -rf $vim_dir $vimrc
 
 mkdir -p $vim_dir_path
 
@@ -88,3 +88,5 @@ cp -r .vim $vim_dir
 cp .vimrc $vimrc
 
 cd $orig_dir
+
+echo "Setup complete"
