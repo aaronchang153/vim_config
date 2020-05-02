@@ -128,5 +128,6 @@ nmap <silent> <C-F12> :e $HOME/.vimrc<CR>
 " Extra < and > ensure that only compelte words are matched (e.g. foo doesn't
 " match to food)
 nnoremap <Leader>r :%s/\<<C-r><C-w>\>//gcI<Left><Left><Left><Left>
+xnoremap <Leader>r y:%s/\<<C-r>0\>//gcI<Left><Left><Left><Left>
 
 nnoremap <Leader>cd :cd %:p:h<CR>:pwd<CR>
