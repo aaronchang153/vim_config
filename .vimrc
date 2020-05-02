@@ -37,6 +37,7 @@ colorscheme ayu
 
 """ Plugin Configuration
 
+"" Config - NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 "" Config - airline
@@ -74,7 +75,6 @@ if has('gui_running')
   "set guioptions-=m "Menu
 endif
 
-" Indent lines for tabs
 set listchars=space:·,tab:>·
 set list
 
