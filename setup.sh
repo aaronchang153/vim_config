@@ -1,15 +1,23 @@
 #!/bin/bash
 
-root="$HOME"
-vim_dir=".vim"
-vimrc=".vimrc"
+vim_dir_name=".vim"
+vimrc_name=".vimrc"
+
+vim_dir_path="$HOME"
+vimrc_path="$HOME"
+
+windows=false
+nvim=false
 
 while [[ $# -gt 0 ]]; do
     key=$1
     case $key in
     -w|--windows)
-        vim_dir="vimfiles"
-        vimrc="_vimrc"
+        windows=true
+        shift
+    ;;
+    -n|--neovim)
+        nvim=true
         shift
     ;;
     -p|--path)
@@ -18,8 +26,9 @@ while [[ $# -gt 0 ]]; do
         shift
     ;;
     -h|--help)
-        echo "Usage: $0 [-w|--windows] [-p|--path <path-to-home>]"
+        echo "Usage: $0 [-w|--windows] [-n|--neovim] [-p|--path <path-to-home>]"
         echo " -w, --windows: Changes .vim and .vimrc to vimfiles and _vimrc respectively"
+        echo " -n, --neovim : Move files to neovim directories"
         echo " -p, --path   : Specify the path place the configuration files in"
         exit 0
     ;;
@@ -30,25 +39,52 @@ while [[ $# -gt 0 ]]; do
     esac
 done
 
-vim_dir_path="$root/$vim_dir"
-vimrc_path="$root/$vimrc"
+# Adjust names and locations of .vim directory and .vimrc
+# Default is .vim and .vimrc on Linux
+if [ "$nvim" = true ]; then
+    if [ "$windows" = true ]; then
+        vim_dir_path="$HOME/AppData/Local"
+        vimrc_path="$HOME/AppData/Local/nvim"
+        vim_dir_name="nvim"
+        vimrc_name="init.vim"
+    else
+        vim_dir_path="$HOME/.local/share/nvim"
+        vimrc_path="$HOME/.config/nvim"
+        vim_dir_name="site"
+        vimrc_name="init.vim"
+    fi
+else # not neovim
+    if [ "$windows" = true ]; then
+        vim_dir_path="$HOME"
+        vimrc_path="$HOME"
+        vim_dir_name="vimfiles"
+        vimrc_name="_vimrc"
+    fi
+fi
 
-echo ".vim path:   $vim_dir_path"
-echo ".vimrc path: $vimrc_path"
+vim_dir="$vim_dir_path/$vim_dir_name"
+vimrc="$vimrc_path/$vimrc_name"
+
+echo "$vim_dir_name path: $vim_dir"
+echo "$vimrc_name path: $vimrc"
 read -p "Continue? (Y/N): " confirm && [[ $confirm == [yY] || $confirm == [yY][eE][sS] ]] || exit 1
 
-if [ -f "$vimrc_path" ]; then
-    echo "Fatal: File $vimrc_path already exists"
-    exit 1
+if [ -d "$vim_dir" ]; then
+    echo "Directory $vim_dir already exists. Delete it? (Y/N)"
+    read -p "Continue? (Y/N): " confirm && [[ $confirm == [yY] || $confirm == [yY][eE][sS] ]] || exit 1
+    rm -rf $vim_dir
 fi
-if [ -d "$vim_dir_path" ]; then
-    echo "Fatal: Directory $vim_dir_path already exists"
-    exit 1
+if [ -f "$vimrc" ]; then
+    echo "File $vimrc already exists. Delete it? (Y/N)"
+    read -p "Continue? (Y/N): " confirm && [[ $confirm == [yY] || $confirm == [yY][eE][sS] ]] || exit 1
+    rm $vimrc
 fi
+
+mkdir -p $vim_dir_path
 
 orig_dir=$(pwd)
 
-cp .vimrc $vimrc_path
-cp -r .vim $vim_dir_path
+cp -r .vim $vim_dir
+cp .vimrc $vimrc
 
 cd $orig_dir
