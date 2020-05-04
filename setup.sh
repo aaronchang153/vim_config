@@ -87,6 +87,8 @@ orig_dir=$(pwd)
 cp -r .vim $vim_dir
 cp .vimrc $vimrc
 
+mkdir $vim_dir/undodir
+
 cd $orig_dir
 
 echo "Setup complete"
