@@ -108,7 +108,7 @@ set scrolloff=2
 set sidescrolloff=4
 
 if has('persistent_undo')
-  set undodir=expand('$HOME/.vim/undodir')
+  let &undodir=expand('$HOME/.vim/undodir')
   set undofile
 endif
 
