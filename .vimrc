@@ -93,7 +93,8 @@ set number
 set nowrap
 set backspace=indent,eol,start
 set title
-set undolevels=100
+set undolevels=1000
+set undoreload=10000
 set ignorecase
 set showmatch
 set smarttab
@@ -105,6 +106,11 @@ set ruler
 set noerrorbells
 set scrolloff=2
 set sidescrolloff=4
+
+if has('persistent_undo')
+  set undodir=expand('$HOME/.vim/undodir')
+  set undofile
+endif
 
 " <zc> in normal mode to collapse a section
 " <zx> to expand
