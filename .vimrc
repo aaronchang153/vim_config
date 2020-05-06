@@ -80,24 +80,26 @@ set list
 
 set viminfo='100,<1000
 
+set title
 set hidden
 
 set expandtab
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
+set smarttab
 set autoindent
 set copyindent
+
 set mouse=a
 set number
 set nowrap
 set backspace=indent,eol,start
-set title
 set undolevels=1000
 set undoreload=10000
+
 set ignorecase
 set showmatch
-set smarttab
 set hlsearch
 set incsearch
 
@@ -136,4 +138,7 @@ nmap <silent> <C-F12> :e $HOME/.vimrc<CR>
 nnoremap <Leader>r :%s/\<<C-r><C-w>\>//gcI<Left><Left><Left><Left>
 xnoremap <Leader>r y:%s/\<<C-r>0\>//gcI<Left><Left><Left><Left>
 
+" cd to current file directory
 nnoremap <Leader>cd :cd %:p:h<CR>:pwd<CR>
+
+nnoremap <Leader>l :set relativenumber!<CR>
