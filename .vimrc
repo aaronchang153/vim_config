@@ -93,6 +93,7 @@ set copyindent
 
 set mouse=a
 set number
+set cursorline
 set nowrap
 set backspace=indent,eol,start
 set undolevels=1000
