@@ -106,6 +106,7 @@ set incsearch
 
 set laststatus=2
 set ruler
+set wildmenu
 set noerrorbells
 set scrolloff=2
 set sidescrolloff=4
