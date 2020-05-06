@@ -132,6 +132,8 @@ nmap <silent> <F9> :UndotreeToggle<CR>
 nmap <silent> <F12> :split $HOME/.vimrc<CR>
 nmap <silent> <C-F12> :e $HOME/.vimrc<CR>
 
+nnoremap <silent> <Leader>l :set relativenumber!<CR>
+
 " Find and replace word under cursor
 " Extra < and > ensure that only compelte words are matched (e.g. foo doesn't
 " match to food)
@@ -140,5 +142,3 @@ xnoremap <Leader>r y:%s/\<<C-r>0\>//gcI<Left><Left><Left><Left>
 
 " cd to current file directory
 nnoremap <Leader>cd :cd %:p:h<CR>:pwd<CR>
-
-nnoremap <Leader>l :set relativenumber!<CR>
