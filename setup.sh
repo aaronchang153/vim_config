@@ -9,6 +9,8 @@ vimrc_path="$HOME"
 windows=false
 nvim=false
 
+force=false
+
 while [[ $# -gt 0 ]]; do
     key=$1
     case $key in
@@ -31,6 +33,10 @@ while [[ $# -gt 0 ]]; do
         echo " -n, --neovim : Move files to neovim directories"
         echo " -p, --path   : Specify the path place the configuration files in"
         exit 0
+    ;;
+    -f)
+        force=true
+        shift
     ;;
     *)
         echo "Fatal: Unrecognized argument \"$key\". See --help for usage."
@@ -69,26 +75,19 @@ echo "$vim_dir_name path: $vim_dir"
 echo "$vimrc_name path: $vimrc"
 read -p "Continue? (Y/N): " confirm && [[ $confirm == [yY] || $confirm == [yY][eE][sS] ]] || exit 1
 
-if [ -d "$vim_dir" ]; then
-    echo "Directory $vim_dir already exists. Delete it? (Y/N)"
-    read -p "Continue? (Y/N): " confirm && [[ $confirm == [yY] || $confirm == [yY][eE][sS] ]] || exit 1
+if [ "$force" = true ]; then
+    rm -rf $vim_dir $vimrc
 fi
+
 if [ -f "$vimrc" ]; then
     echo "File $vimrc already exists. Delete it? (Y/N)"
     read -p "Continue? (Y/N): " confirm && [[ $confirm == [yY] || $confirm == [yY][eE][sS] ]] || exit 1
 fi
 
-rm -rf $vim_dir $vimrc
-
-mkdir -p $vim_dir_path
-
-orig_dir=$(pwd)
-
-cp -r .vim $vim_dir
 cp .vimrc $vimrc
 
-mkdir $vim_dir/undodir
+curl -fLo $vim_dir/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
-cd $orig_dir
+mkdir $vim_dir/undodir
 
 echo "Setup complete"
