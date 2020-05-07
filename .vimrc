@@ -1,3 +1,11 @@
+""" Basic vim config
+
+set nocompatible
+filetype plugin on
+filetype indent on
+syntax on
+
+
 """ Vim Plug
 call plug#begin()
 
