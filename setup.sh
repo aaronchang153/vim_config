@@ -88,6 +88,6 @@ cp .vimrc $vimrc
 
 curl -fLo $vim_dir/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
-mkdir $vim_dir/undodir
+mkdir -p $vim_dir/undodir
 
 echo "Setup complete"
