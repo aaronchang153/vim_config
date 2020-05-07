@@ -73,21 +73,42 @@ vimrc="$vimrc_path/$vimrc_name"
 
 echo "$vim_dir_name path: $vim_dir"
 echo "$vimrc_name path: $vimrc"
-read -p "Continue? (Y/N): " confirm && [[ $confirm == [yY] || $confirm == [yY][eE][sS] ]] || exit 1
+#read -p "Continue? (Y/N): " confirm && [[ $confirm == [yY] || $confirm == [yY][eE][sS] ]] || exit 1
+read -p "Continue? (y/N): "
+if [[ ! $REPLY =~ ^[Yy]$ ]]; then
+    echo "Exitting..."
+    echo
+    exit 1
+fi
 
 if [ "$force" = true ]; then
+    echo ""
+    echo "Deleting vimrc and vim directory"
     rm -rf $vim_dir $vimrc
 fi
 
 if [ -f "$vimrc" ]; then
-    echo "File $vimrc already exists. Delete it? (Y/N)"
-    read -p "Continue? (Y/N): " confirm && [[ $confirm == [yY] || $confirm == [yY][eE][sS] ]] || exit 1
+    echo ""
+    read -p "File $vimrc already exists. Delete it? (y/N): "
+    if [[ ! $REPLY =~ ^[Yy]$ ]]; then
+        echo "Exitting..."
+        echo
+        exit 1
+    fi
 fi
 
+echo
+echo "Copying .vimrc to $vimrc"
 cp .vimrc $vimrc
 
+echo
+echo "Downloading vim-plug to $vim_dir/autoload/plug.vim"
 curl -fLo $vim_dir/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
+echo
+echo "Creating undo directory"
 mkdir -p $vim_dir/undodir
 
+echo
 echo "Setup complete"
+echo
