@@ -27,16 +27,17 @@ while [[ $# -gt 0 ]]; do
         shift
         shift
     ;;
+    -f)
+        force=true
+        shift
+    ;;
     -h|--help)
         echo "Usage: $0 [-w|--windows] [-n|--neovim] [-p|--path <path-to-home>]"
         echo " -w, --windows: Changes .vim and .vimrc to vimfiles and _vimrc respectively"
         echo " -n, --neovim : Move files to neovim directories"
         echo " -p, --path   : Specify the path place the configuration files in"
+        echo " -f           : Delete .vim and .vimrc without prompt"
         exit 0
-    ;;
-    -f)
-        force=true
-        shift
     ;;
     *)
         echo "Fatal: Unrecognized argument \"$key\". See --help for usage."
@@ -73,7 +74,6 @@ vimrc="$vimrc_path/$vimrc_name"
 
 echo "$vim_dir_name path: $vim_dir"
 echo "$vimrc_name path: $vimrc"
-#read -p "Continue? (Y/N): " confirm && [[ $confirm == [yY] || $confirm == [yY][eE][sS] ]] || exit 1
 read -p "Continue? (y/N): "
 if [[ ! $REPLY =~ ^[Yy]$ ]]; then
     echo "Exitting..."
@@ -82,13 +82,13 @@ if [[ ! $REPLY =~ ^[Yy]$ ]]; then
 fi
 
 if [ "$force" = true ]; then
-    echo ""
+    echo
     echo "Deleting vimrc and vim directory"
     rm -rf $vim_dir $vimrc
 fi
 
 if [ -f "$vimrc" ]; then
-    echo ""
+    echo
     read -p "File $vimrc already exists. Delete it? (y/N): "
     if [[ ! $REPLY =~ ^[Yy]$ ]]; then
         echo "Exitting..."
