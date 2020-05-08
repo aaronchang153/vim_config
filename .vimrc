@@ -31,6 +31,7 @@ Plug 'xolox/vim-session'
 Plug 'henrik/vim-indexed-search'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'mbbill/undotree'
+Plug 'ctrlpvim/ctrlp.vim'
 
 call plug#end()
 
@@ -66,6 +67,12 @@ let g:session_autosave='no'
 
 "" Config - gutentags
 let g:gutentags_enabled = 0
+
+"" Config - CtrlP
+let g:ctrlp_map = '<C-p>'
+let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_extensions = ['tag', 'buffertag']
 
 
 """ Vim Settings
