@@ -31,7 +31,8 @@ Plug 'xolox/vim-session'
 Plug 'henrik/vim-indexed-search'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'mbbill/undotree'
-Plug 'ctrlpvim/ctrlp.vim'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 
 call plug#end()
 
@@ -67,12 +68,6 @@ let g:session_autosave='no'
 
 "" Config - gutentags
 let g:gutentags_enabled = 0
-
-"" Config - CtrlP
-let g:ctrlp_map = '<C-p>'
-let g:ctrlp_cmd = 'CtrlP'
-let g:ctrlp_working_path_mode = 'ra'
-let g:ctrlp_extensions = ['tag']
 
 
 """ Vim Settings
@@ -148,6 +143,10 @@ nmap <silent> <F9> :UndotreeToggle<CR>
 
 nmap <silent> <F12> :split $HOME/.vimrc<CR>
 nmap <silent> <C-F12> :e $HOME/.vimrc<CR>
+
+" fzf bindings
+nmap <silent> <C-p> :Files<CR>
+nmap <silent> <Leader>p :Buffers<CR>
 
 nnoremap <silent> <Leader>l :set relativenumber!<CR>
 
