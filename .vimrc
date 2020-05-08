@@ -146,7 +146,10 @@ nmap <silent> <C-F12> :e $HOME/.vimrc<CR>
 
 " fzf bindings
 nmap <silent> <C-p> :Files<CR>
-nmap <silent> <Leader>p :Buffers<CR>
+nmap <silent> <Leader>pf :Files<CR>
+nmap <silent> <Leader>pb :Buffers<CR>
+nmap <silent> <Leader>pc :Commands<CR>
+nmap <silent> <Leader>ps :Colors<CR>
 
 nnoremap <silent> <Leader>l :set relativenumber!<CR>
 
