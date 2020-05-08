@@ -34,6 +34,10 @@ Plug 'mbbill/undotree'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
+"" Plugin - Non-Programming
+Plug 'junegunn/goyo.vim'
+Plug 'junegunn/limelight.vim'
+
 call plug#end()
 
 
@@ -68,6 +72,28 @@ let g:session_autosave='no'
 
 "" Config - gutentags
 let g:gutentags_enabled = 0
+
+"" Config - Goyo
+function! s:goyo_enter()
+  set nolist
+  set noexpandtab
+  set wrap linebreak
+  set scrolloff=999
+  IndentLinesDisable
+  Limelight
+  nnoremap <silent> j gj
+  nnoremap <silent> k gk
+endfunction
+function! s:goyo_leave()
+  set list
+  set expandtab
+  set nowrap
+  set scrolloff=2
+  IndentLinesEnable
+  Limelight!
+endfunction
+autocmd! User GoyoEnter nested call <SID>goyo_enter()
+autocmd! User GoyoLeave nested call <SID>goyo_leave()
 
 
 """ Vim Settings
@@ -150,6 +176,7 @@ nmap <silent> <Leader>pf :Files<CR>
 nmap <silent> <Leader>pb :Buffers<CR>
 nmap <silent> <Leader>pc :Commands<CR>
 nmap <silent> <Leader>ps :Colors<CR>
+nmap <silent> <Leader>pt :Filetypes<CR>
 
 nnoremap <silent> <Leader>l :set relativenumber!<CR>
 
