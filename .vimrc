@@ -21,8 +21,8 @@ Plug 'justinmk/vim-syntax-extra'
 Plug 'sheerun/vim-polyglot'
 
 "" Plugin - Utilities
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+Plug 'itchyny/lightline.vim'
+Plug 'mengelbrecht/lightline-bufferline'
 Plug 'Yggdroot/indentLine'
 Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-fugitive'
@@ -52,14 +52,46 @@ colorscheme ayu
 
 """ Plugin Configuration
 
+"" Config - Lightline
+let g:lightline#bufferline#filename_modifier = ':t'
+let g:lightline = {
+    \ 'colorscheme': 'ayu',
+    \ 'active': {
+    \   'left': [
+    \       [ 'mode', 'paste' ],
+    \       [ 'gitbranch' ],
+    \       [ 'readonly', 'filename', 'modified' ] ],
+    \   'right': [ 
+    \       [ 'lineinfo' ],
+    \       [ 'percent' ],
+    \       [ 'statuslinetabs'] ]
+    \ },
+    \ 'tabline': {
+    \   'left': [ ['buffers'] ],
+    \   'right': [ ]
+    \ },
+    \ 'component': {
+    \   'filename': '%f'
+    \ },
+    \ 'component_expand': {
+    \   'buffers': 'lightline#bufferline#buffers'
+    \ },
+    \ 'component_type': {
+    \   'buffers': 'tabsel'
+    \ },
+    \ 'component_function': {
+    \   'statuslinetabs': 'LightlineStatuslineTabs',
+    \   'gitbranch': 'FugitiveHead'
+    \ }
+    \ }
+
+function! LightlineStatuslineTabs()
+  return join(map(range(1, tabpagenr('$')),
+        \ '(v:val == tabpagenr() ? " •" : " ·") . lightline#tab#tabnum(v:val)  . (v:val == tabpagenr() ? "" : "")'), "")
+endfunction
+
 "" Config - NERDTree
 autocmd bufenter * if (winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree()) | q | endif
-
-"" Config - airline
-let g:airline#extensions#tabline#enabled = 1
-"let g:airline#extensions#tabline#buffer_idx_mode = 1
-let g:airline#extensions#tabline#fnamemod = ':t'
-silent! call airline#extensions#whitespace#disable()
 
 "" Config - indent line
 let g:indentLine_enabled = 1
@@ -142,6 +174,7 @@ set hlsearch
 set incsearch
 
 set laststatus=2
+set showtabline=2
 set ruler
 set wildmenu
 set noerrorbells
