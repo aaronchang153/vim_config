@@ -46,14 +46,14 @@ call plug#end()
 if exists('+termguicolors')
   set termguicolors
 endif
-let ayucolor="dark"
+let ayucolor='dark'
 colorscheme ayu
 
 
 """ Plugin Configuration
 
 "" Config - NERDTree
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+autocmd bufenter * if (winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree()) | q | endif
 
 "" Config - airline
 let g:airline#extensions#tabline#enabled = 1
