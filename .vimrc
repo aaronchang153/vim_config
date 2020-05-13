@@ -181,6 +181,10 @@ nmap <silent> <Leader>pt :Filetypes<CR>
 
 nnoremap <silent> <Leader>l :set relativenumber!<CR>
 
+" Switch to/Delete buffers
+nnoremap <Leader>bb :ls<CR>:b<Space>
+nnoremap <Leader>bd :ls<CR>:bd<Space>
+
 " Find and replace word under cursor
 " Extra < and > ensure that only compelte words are matched (e.g. foo doesn't
 " match to food)
