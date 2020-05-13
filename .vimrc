@@ -141,6 +141,7 @@ if has('gui_running')
   set guioptions-=T "Toolbar
   set guioptions-=r "Right Scrollbar
   set guioptions-=L "Left Scrollbar
+  set guioptions-=e "GUI Tabline
   "set guioptions-=m "Menu
 endif
 
