@@ -51,46 +51,6 @@ colorscheme ayu
 
 """ Plugin Configuration
 
-<<<<<<< HEAD
-"" Config - Lightline
-let g:lightline#bufferline#filename_modifier = ':t'
-let g:lightline = {
-    \ 'colorscheme': 'ayu',
-    \ 'active': {
-    \   'left': [
-    \       [ 'mode', 'paste' ],
-    \       [ 'gitbranch' ],
-    \       [ 'readonly', 'filename', 'modified' ] ],
-    \   'right': [ 
-    \       [ 'lineinfo' ],
-    \       [ 'percent' ] ]
-    \ },
-    \ 'tabline': {
-    \   'left': [ ['buffers'] ],
-    \   'right': [ [ 'statuslinetabs'] ]
-    \ },
-    \ 'component': {
-    \   'filename': '%f'
-    \ },
-    \ 'component_expand': {
-    \   'buffers': 'lightline#bufferline#buffers'
-    \ },
-    \ 'component_type': {
-    \   'buffers': 'tabsel'
-    \ },
-    \ 'component_function': {
-    \   'statuslinetabs': 'LightlineStatuslineTabs',
-    \   'gitbranch': 'FugitiveHead'
-    \ }
-    \ }
-
-function! LightlineStatuslineTabs()
-  return join(map(range(1, tabpagenr('$')),
-        \ '(v:val == tabpagenr() ? " •" : " ·") . lightline#tab#tabnum(v:val)  . (v:val == tabpagenr() ? "" : "")'), "")
-endfunction
-
-=======
->>>>>>> parent of a913aff... Replace airline with lightline for performance
 "" Config - NERDTree
 autocmd bufenter * if (winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree()) | q | endif
 
