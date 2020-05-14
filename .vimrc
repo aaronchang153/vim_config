@@ -12,7 +12,6 @@ call plug#begin()
 "" Plugin - Colorschemes
 Plug 'morhetz/gruvbox'
 Plug 'chriskempson/base16-vim'
-Plug 'yuttie/hydrangea-vim'
 Plug 'ayu-theme/ayu-vim'
 
 "" Plugin - Language Support
