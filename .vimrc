@@ -63,12 +63,11 @@ let g:lightline = {
     \       [ 'readonly', 'filename', 'modified' ] ],
     \   'right': [ 
     \       [ 'lineinfo' ],
-    \       [ 'percent' ],
-    \       [ 'statuslinetabs'] ]
+    \       [ 'percent' ] ]
     \ },
     \ 'tabline': {
     \   'left': [ ['buffers'] ],
-    \   'right': [ ]
+    \   'right': [ [ 'statuslinetabs'] ]
     \ },
     \ 'component': {
     \   'filename': '%f'
