@@ -63,7 +63,7 @@ silent! call airline#extensions#whitespace#disable()
 "" Config - indent line
 let g:indentLine_enabled = 1
 let g:indentLine_showFirstIndentLevel = 1
-let g:indentLine_setColors = 0
+"let g:indentLine_setColors = 0
 let g:indentLine_char = '¦'
 let g:indentLine_first_char = '¦'
 
@@ -112,7 +112,8 @@ if has('gui_running')
   "set guioptions-=m "Menu
 endif
 
-set listchars=space:·,tab:>·
+"set listchars=space:·,tab:>·
+set listchars=tab:>·,trail:$
 set list
 
 set viminfo='100,<1000
