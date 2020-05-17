@@ -13,6 +13,8 @@ call plug#begin()
 Plug 'morhetz/gruvbox'
 Plug 'chriskempson/base16-vim'
 Plug 'ayu-theme/ayu-vim'
+Plug 'altercation/vim-colors-solarized'
+Plug 'nanotech/jellybeans.vim'
 
 "" Plugin - Language Support
 Plug 'dense-analysis/ale'
