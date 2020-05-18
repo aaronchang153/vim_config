@@ -111,6 +111,9 @@ if has('gui_running')
   set guioptions-=L "Left Scrollbar
   set guioptions-=e "GUI Tabline
   "set guioptions-=m "Menu
+
+  "For some reason failing preview window sometimes causes gVim to crash
+  autocmd VimEnter * command! -bang -nargs=? Files call fzf#vim#files(<q-args>, {'options': '--no-preview'}, <bang>0)
 endif
 
 "set listchars=space:·,tab:>·
