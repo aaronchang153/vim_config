@@ -115,7 +115,7 @@ if has('gui_running')
 endif
 
 "set listchars=space:·,tab:>·
-set listchars=tab:>·,trail:·
+set listchars=tab:>\ ,trail:·
 set list
 
 set viminfo='100,<1000
