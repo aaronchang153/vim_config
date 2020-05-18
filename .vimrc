@@ -47,8 +47,7 @@ call plug#end()
 if exists('+termguicolors')
   set termguicolors
 endif
-let ayucolor='dark'
-colorscheme ayu
+colorscheme jellybeans
 
 
 """ Plugin Configuration
