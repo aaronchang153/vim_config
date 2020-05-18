@@ -178,7 +178,6 @@ nmap <silent> <C-F12> :e $HOME/.vimrc<CR>
 nmap <silent> <C-p> :Files<CR>
 nmap <silent> <Leader>pf :Files<CR>
 nmap <silent> <Leader>pb :Buffers<CR>
-nmap <silent> <Leader>pc :Commands<CR>
 nmap <silent> <Leader>ps :Colors<CR>
 nmap <silent> <Leader>pt :Filetypes<CR>
 
