@@ -185,9 +185,11 @@ nmap <silent> <Leader>pt :Filetypes<CR>
 
 nnoremap <silent> <Leader>l :set relativenumber!<CR>
 
-" Switch to/Delete buffers
+" buffer bindings
 nnoremap <Leader>bb :ls<CR>:b<Space>
 nnoremap <Leader>bd :ls<CR>:bd<Space>
+nnoremap <Leader>bn :bn<CR>
+nnoremap <Leader>bp :bp<CR>
 
 " Find and replace word under cursor
 " Extra < and > ensure that only compelte words are matched (e.g. foo doesn't
