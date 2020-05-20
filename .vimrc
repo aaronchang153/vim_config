@@ -148,8 +148,7 @@ nmap <silent> <F3> :NERDTreeToggle<CR>
 nmap <silent> <F4> :ALEToggle<CR>
 nmap <silent> <F9> :UndotreeToggle<CR>
 
-nmap <silent> <F12> :split $HOME/.vimrc<CR>
-nmap <silent> <C-F12> :e $HOME/.vimrc<CR>
+nmap <silent> <F12> :e $HOME/.vimrc<CR>
 
 " fzf bindings
 nmap <silent> <C-p> :Files<CR>
