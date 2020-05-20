@@ -35,7 +35,6 @@ Plug 'ludovicchabant/vim-gutentags'
 Plug 'mbbill/undotree'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'easymotion/vim-easymotion'
 
 call plug#end()
 
@@ -70,9 +69,6 @@ let g:session_autosave='no'
 
 "" Config - gutentags
 let g:gutentags_enabled = 0
-
-"" Config - easymotion
-nmap <Space> <Plug>(easymotion-prefix)
 
 
 """ Vim Settings
