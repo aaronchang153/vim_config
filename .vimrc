@@ -135,6 +135,7 @@ set copyindent
 
 set mouse=a
 set number
+set relativenumber
 set cursorline
 set nowrap
 set backspace=indent,eol,start
