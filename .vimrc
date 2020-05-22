@@ -175,5 +175,5 @@ xnoremap <Leader>r y:%s/\<<C-r>0\>//gcI<Left><Left><Left><Left>
 " cd to current file directory
 nnoremap <Leader>cd :cd %:p:h<CR>:pwd<CR>
 
-" insert mode clipboard paste binding
-inoremap <C-p> <C-r>*
+" insert mode clipboard paste
+inoremap <C-v> <C-r>*
