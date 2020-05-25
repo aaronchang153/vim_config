@@ -66,8 +66,8 @@ let g:lightline = {
     \       [ 'filetype' ] ]
     \ },
     \ 'tabline': {
-    \   'left': [ ['buffers'] ],
-    \   'right': [ [ 'statuslinetabs'] ]
+    \   'left': [ [ 'buffers' ] ],
+    \   'right': [ [ 'statuslinetabs' ] ]
     \ },
     \ 'component': {
     \   'filename': '%f'
@@ -123,6 +123,8 @@ if has('gui_running')
 
   "For some reason failing preview window sometimes causes gVim to crash
   autocmd VimEnter * command! -bang -nargs=? Files call fzf#vim#files(<q-args>, {'options': '--no-preview'}, <bang>0)
+  "This one just doesn't run when preview fails
+  autocmd VimEnter * command! -bang -nargs=? Buffers call fzf#vim#buffers(<q-args>, {'options': '--no-preview'}, <bang>0)
 endif
 
 "set listchars=space:·,tab:>·
